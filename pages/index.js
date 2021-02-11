@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <div className="bg-secondary">
+    <div className="bg-secondary d-flex flex-column ">
       <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
         <div className="container-fluid justify-content-center">
           <a href="#" className="navbar-brand">
@@ -32,11 +32,10 @@ export default function Home() {
           </ul>
         </div>
       </nav>
-      <main className="container bg-light">
-        <div className="p-1"></div>
-        <div className="card m-5">
+      <main className="container bg-light d-flex flex-column mb-auto">
+        <div className="card mt-5 mx-5">
           <img
-            src="https://polki.pl/foto/1_X_LARGE/laurka-dla-mamy-kwiat-2454312.jpg"
+            src="https://lh3.googleusercontent.com/kExcPSBj8Asw9_CJDVLscZnqfqoavRqE-jMqHW1ZSlNotwwOqLXrXYvSgy6JoT3Bq04BMHOQa2SHfdOni7PHaJckiaWV0hBFeFo1Fyl8oav9HDq_MfzAI3vFx12bbINKWGIi_m0O=w2400"
             className="card-img"
             alt="Laurka dla mamy"
           />
@@ -45,8 +44,12 @@ export default function Home() {
             <h6 className="card-subtitle fw-normal">Autor: Lena</h6>
             <p className="card-text fw-light">Laurka stworzona dla mamy z okazji dnia mamy</p>
             <div className="d-flex justify-content-center">
-              <div className="btn btn-outline-success card-link">Tak</div>
-              <div className="btn btn-outline-danger card-link">Nie</div>
+              <div className="btn btn-outline-danger card-link d-flex justify-content-center button-like">
+                <i class="bi bi-heart-fill me-2"></i>Doskonała
+              </div>
+              <div className="btn btn-outline-success card-link d-flex justify-content-center button-like">
+                <i class="bi bi-hand-thumbs-up-fill me-2"></i>Dobra
+              </div>
             </div>
           </div>
           <div className="card-footer">
@@ -62,27 +65,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="card m-5">
-          <img
-            src="https://polki.pl/foto/1_X_LARGE/laurka-dla-mamy-kwiat-2454312.jpg"
-            className="card-img"
-            alt="Laurka dla mamy"
-          />
-          <div className="card-body text-center">
-            <h5 className="card-title">Kwiatki dla mamy</h5>
-            <h6 className="card-subtitle">Lena</h6>
-            <p className="card-text">Laurka stworzona dla mamy z okazji dnia mamy</p>
-            <div className="d-flex justify-content-center">
-              <div className="btn btn-outline-success card-link">Tak</div>
-              <div className="btn btn-outline-danger card-link">Nie</div>
-            </div>
-          </div>
-          <div className="card-footer d-flex justify-content-around align-items-center">
-            <span>Dodano 4 dni temu</span>
-            <span className="text-muted">2020-03-20</span>
-          </div>
-        </div>
       </main>
+      <footer className="footer bg-dark py-3 ">
+        <div className="container d-flex justify-content-between">
+          <span className="fst-italic text-white">
+            Strona stworzona dla dwóch códownych córeczek.
+          </span>
+          <span className="text-muted fw-normal">© 2021 Copyright: Marcin Bździuła</span>
+        </div>
+      </footer>
     </div>
   );
 }

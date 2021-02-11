@@ -1,65 +1,88 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from 'react';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+    <div className="bg-secondary">
+      <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+        <div className="container-fluid justify-content-center">
+          <a href="#" className="navbar-brand">
+            Galeria Laurek
           </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <ul className="navbar-nav nav-pills">
+            <li className="nav-item">
+              <a href="#" className="nav-link active bg-danger">
+                Główna
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#" className="nav-link">
+                Poczekalnia
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#" className="nav-link">
+                Top
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#" className="nav-link disabled">
+                Dodaj
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main className="container bg-light">
+        <div className="p-1"></div>
+        <div className="card m-5">
+          <img
+            src="https://polki.pl/foto/1_X_LARGE/laurka-dla-mamy-kwiat-2454312.jpg"
+            className="card-img"
+            alt="Laurka dla mamy"
+          />
+          <div className="card-body text-center">
+            <h5 className="card-title">Kwiatki dla mamy</h5>
+            <h6 className="card-subtitle fw-normal">Autor: Lena</h6>
+            <p className="card-text fw-light">Laurka stworzona dla mamy z okazji dnia mamy</p>
+            <div className="d-flex justify-content-center">
+              <div className="btn btn-outline-success card-link">Tak</div>
+              <div className="btn btn-outline-danger card-link">Nie</div>
+            </div>
+          </div>
+          <div className="card-footer">
+            <div className="row justify-content-start align-items-center">
+              <span className="col-4 text-center">Dodano 4 dni temu</span>
+              <span className="col-8">
+                Tagi:
+                <span className="text-muted">
+                  {' '}
+                  #DlaMamy #DlaTaty #DlaDziadkaAndrzeja #DlaBabciBeaty
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="card m-5">
+          <img
+            src="https://polki.pl/foto/1_X_LARGE/laurka-dla-mamy-kwiat-2454312.jpg"
+            className="card-img"
+            alt="Laurka dla mamy"
+          />
+          <div className="card-body text-center">
+            <h5 className="card-title">Kwiatki dla mamy</h5>
+            <h6 className="card-subtitle">Lena</h6>
+            <p className="card-text">Laurka stworzona dla mamy z okazji dnia mamy</p>
+            <div className="d-flex justify-content-center">
+              <div className="btn btn-outline-success card-link">Tak</div>
+              <div className="btn btn-outline-danger card-link">Nie</div>
+            </div>
+          </div>
+          <div className="card-footer d-flex justify-content-around align-items-center">
+            <span>Dodano 4 dni temu</span>
+            <span className="text-muted">2020-03-20</span>
+          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }

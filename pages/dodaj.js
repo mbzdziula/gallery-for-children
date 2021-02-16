@@ -8,7 +8,7 @@ export default function Dodaj() {
     <div className="bg-secondary d-flex flex-column next-body">
       <MainNavbar />
 
-      <main className="container bg-light d-flex flex-column mb-auto flex-grow-1">
+      <main className="container bg-light d-flex flex-column flex-grow-1 py-3">
         <AddForm />
       </main>
       <MainFooter />

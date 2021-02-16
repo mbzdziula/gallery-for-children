@@ -1,6 +1,7 @@
-import '../styles/globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.scss';
+// import 'bootstrap/scss/bootstrap.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../styles/custom.scss';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

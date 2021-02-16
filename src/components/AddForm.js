@@ -131,7 +131,7 @@ function AddForm() {
           ></textarea>
         </div>
         <div className="row mx-2 my-5">
-          <button className="btn btn-danger btn-lg" type="submit" id="inputGroupFileAddon04">
+          <button className="btn btn-primary btn-lg" type="submit" id="inputGroupFileAddon04">
             Dodaj
           </button>
         </div>

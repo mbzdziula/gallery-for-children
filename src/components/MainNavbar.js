@@ -19,28 +19,20 @@ function MainNavbar() {
           <Nav variant="pills" className=" d-flex align-items-center">
             <li className="nav-item">
               <Link href="/">
-                <a className={`nav-link px-2 ${pathname === '/' ? 'active bg-danger' : ''}`}>
-                  Główna
-                </a>
+                <a className={`nav-link px-2 ${pathname === '/' ? 'active' : ''}`}>Główna</a>
               </Link>
             </li>
             <li className="navbar-item">
-              <a
-                className={`nav-link px-2 ${pathname === '/poczekalnia' ? 'active bg-danger' : ''}`}
-              >
+              <a className={`nav-link px-2 ${pathname === '/poczekalnia' ? 'active' : ''}`}>
                 Poczekalnia
               </a>
             </li>
             <li className="navbar-item">
-              <a className={`nav-link px-2 ${pathname === '/top' ? 'active bg-danger' : ''}`}>
-                Top
-              </a>
+              <a className={`nav-link px-2 ${pathname === '/top' ? 'active ' : ''}`}>Top</a>
             </li>
             <li className="navbar-item">
               <Link href="/dodaj">
-                <a className={`nav-link px-2 ${pathname === '/dodaj' ? 'active bg-danger' : ''}`}>
-                  Dodaj
-                </a>
+                <a className={`nav-link px-2 ${pathname === '/dodaj' ? 'active' : ''}`}>Dodaj</a>
               </Link>
             </li>
           </Nav>

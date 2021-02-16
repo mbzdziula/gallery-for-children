@@ -1,9 +1,10 @@
 export default {
+  id: '',
   id_image: '',
   title: '',
-  subtitle: '',
-  comment: '',
+  autor: '',
+  description: '',
+  tag: '',
   great: 0,
   like: 0,
-  tags: '',
 };

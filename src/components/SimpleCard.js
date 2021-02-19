@@ -34,7 +34,7 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
 
     if (!clickedLike) {
       await axios.patch(
-        `https://gallery-for-childern.herokuapp.com/api/action/like/${element.id}`,
+        `https://gallery-for-children.herokuapp.com/api/action/like/${element.id}`,
         {
           value: 1,
           score: 1,
@@ -46,7 +46,7 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
       setClickedLike(true);
     } else {
       await axios.patch(
-        `https://gallery-for-childern.herokuapp.com/api/action/like/${element.id}`,
+        `https://gallery-for-children.herokuapp.com/api/action/like/${element.id}`,
         {
           value: -1,
           score: -1,
@@ -69,7 +69,7 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
 
     if (!clickedGreat) {
       await axios.patch(
-        `https://gallery-for-childern.herokuapp.com/api/action/great/${element.id}`,
+        `https://gallery-for-children.herokuapp.com/api/action/great/${element.id}`,
         {
           value: 1,
           score: 2,
@@ -82,7 +82,7 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
       setClickedGreat(true);
     } else {
       await axios.patch(
-        `https://gallery-for-childern.herokuapp.com/api/action/great/${element.id}`,
+        `https://gallery-for-children.herokuapp.com/api/action/great/${element.id}`,
         {
           value: -1,
           score: -2,

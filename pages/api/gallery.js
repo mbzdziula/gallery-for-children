@@ -15,6 +15,7 @@ export default async function handler(req, res) {
           tag: post.tag,
           great: 0,
           like: 0,
+          score: 0,
         },
       });
       return res.json(result);

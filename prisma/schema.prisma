@@ -19,6 +19,7 @@ model Gallery {
   tag           String?
   great         Int
   like          Int
+  score         Int
   CreatedAt     DateTime @default(now())
   UpdatedAt     DateTime @updatedAt
 }

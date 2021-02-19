@@ -15,25 +15,34 @@ export default async function handler(req, res) {
     return name && name[0].toUpperCase() + name.slice(1);
   }
 
-  const result =
-    name !== 'page'
-      ? await prisma.gallery.findMany({
-          where: {
-            OR: [{ autor: capitalize(name) }, { autor: 'Praca wspólna' }],
-          },
+  switch (name) {
+    default: {
+      const result = await prisma.gallery.findMany({
+        where: {
+          OR: [{ autor: capitalize(name) }, { autor: 'Praca wspólna' }],
+        },
 
-          orderBy: {
-            CreatedAt: 'desc',
-          },
-          skip: skipPost,
-          take: 10,
-        })
-      : await prisma.gallery.findMany({
-          orderBy: {
-            CreatedAt: 'desc',
-          },
-          skip: skipPost,
-          take: 10,
-        });
-  return res.json(result);
+        orderBy: {
+          CreatedAt: 'desc',
+        },
+        skip: skipPost,
+        take: 10,
+      });
+      return res.json(result);
+    }
+    case 'page': {
+      const result = await prisma.gallery.findMany({
+        orderBy: {
+          CreatedAt: 'desc',
+        },
+        skip: skipPost,
+        take: 10,
+      });
+      return res.json(result);
+    }
+    case 'top': {
+      const result = await prisma.gallery.findMany({ orderBy: { score: 'desc' } });
+      return res.json(result);
+    }
+  }
 }

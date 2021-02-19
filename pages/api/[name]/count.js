@@ -11,13 +11,22 @@ export default async function handler(req, res) {
     return name && name[0].toUpperCase() + name.slice(1);
   }
 
-  const result =
-    name !== 'page'
-      ? await prisma.gallery.count({
-          where: {
-            OR: [{ autor: capitalize(name) }, { autor: 'Praca wspólna' }],
-          },
-        })
-      : await prisma.gallery.count();
-  return res.json(result);
+  switch (name) {
+    case 'page': {
+      const result = await prisma.gallery.count();
+      return res.json(result);
+    }
+    case 'top': {
+      const result = await prisma.gallery.count();
+      return res.json(result);
+    }
+    default: {
+      const result = await prisma.gallery.count({
+        where: {
+          OR: [{ autor: capitalize(name) }, { autor: 'Praca wspólna' }],
+        },
+      });
+      return res.json(result);
+    }
+  }
 }

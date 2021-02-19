@@ -25,7 +25,9 @@ function MainNavbar({ name }) {
               </Link>
             </li>
             <li className="navbar-item">
-              <a className={`nav-link px-2 ${pathname === '/top' ? 'active ' : ''}`}>Top</a>
+              <Link href="/top/1">
+                <a className={`nav-link px-2 ${name === 'top' ? 'active ' : ''}`}>Top</a>
+              </Link>
             </li>
 
             <li className="navbar-item">

@@ -18,11 +18,13 @@ export default async function handler(req, res) {
         case 'great': {
           const great = await prisma.gallery.findUnique({ where: { id: newId } });
           const newValue = great.great + value.value;
+          const newScore = great.score + value.score;
 
           const result = await prisma.gallery.update({
             where: { id: newId },
             data: {
               great: newValue,
+              score: newScore,
             },
           });
           return res.json(result);
@@ -30,10 +32,12 @@ export default async function handler(req, res) {
         case 'like': {
           const like = await prisma.gallery.findUnique({ where: { id: newId } });
           const newValue = like.like + value.value;
+          const newScore = like.score + value.score;
           const result = await prisma.gallery.update({
             where: { id: newId },
             data: {
               like: newValue,
+              score: newScore,
             },
           });
           return res.json(result);

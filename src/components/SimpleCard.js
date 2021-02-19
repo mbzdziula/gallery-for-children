@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'cloudinary-react';
+import PropTypes from 'prop-types';
 
 function SimpleCard({ element }) {
   const date = element.CreatedAt;
@@ -46,10 +47,10 @@ function SimpleCard({ element }) {
       </div>
       <div className="card-footer">
         <div className="row justify-content-start align-items-center">
-          <span className="col-4 text-center">
+          <span className="col-md-4 text-center">
             Dodano: {newDate.getDate()} {newMonth} {newDate.getFullYear()}
           </span>
-          <span className="col-8">
+          <span className="col-md-8">
             Tagi:
             <span className="text-muted"> {element.tag}</span>
           </span>
@@ -58,5 +59,10 @@ function SimpleCard({ element }) {
     </div>
   );
 }
+
+SimpleCard.propTypes = {
+  element: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default SimpleCard;

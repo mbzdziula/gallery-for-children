@@ -85,7 +85,7 @@ function AddForm() {
 
             <option value="Lena">Lena</option>
             <option value="Iga">Iga</option>
-            <option value="Razem">Praca wspólna</option>
+            <option value="Praca wspólna">Praca wspólna</option>
           </select>
         </div>
         <div className="row mx-2 my-4">
@@ -131,7 +131,11 @@ function AddForm() {
           ></textarea>
         </div>
         <div className="row mx-2 my-5">
-          <button className="btn btn-primary btn-lg" type="submit" id="inputGroupFileAddon04">
+          <button
+            className="btn btn-primary btn-lg text-light"
+            type="submit"
+            id="inputGroupFileAddon04"
+          >
             Dodaj
           </button>
         </div>

@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Navbar, Nav } from 'react-bootstrap-v5';
+import PropTypes from 'prop-types';
 
-function MainNavbar() {
+function MainNavbar({ name }) {
   const router = useRouter();
   const pathname = router.pathname;
 
@@ -18,17 +20,23 @@ function MainNavbar() {
         <Navbar.Collapse id="main-navbar-nav" className="">
           <Nav variant="pills" className=" d-flex align-items-center">
             <li className="nav-item">
-              <Link href="/">
-                <a className={`nav-link px-2 ${pathname === '/' ? 'active' : ''}`}>Główna</a>
+              <Link href="/page/1">
+                <a className={`nav-link px-2 ${name === 'page' ? 'active' : ''}`}>Główna</a>
               </Link>
             </li>
             <li className="navbar-item">
-              <a className={`nav-link px-2 ${pathname === '/poczekalnia' ? 'active' : ''}`}>
-                Poczekalnia
-              </a>
+              <a className={`nav-link px-2 ${pathname === '/top' ? 'active ' : ''}`}>Top</a>
+            </li>
+
+            <li className="navbar-item">
+              <Link href="/lena/1">
+                <a className={`nav-link px-2 ${name === 'lena' ? 'active ' : ''}`}>Lena</a>
+              </Link>
             </li>
             <li className="navbar-item">
-              <a className={`nav-link px-2 ${pathname === '/top' ? 'active ' : ''}`}>Top</a>
+              <Link href="/iga/1">
+                <a className={`nav-link px-2 ${name === 'iga' ? 'active ' : ''}`}>Iga</a>
+              </Link>
             </li>
             <li className="navbar-item">
               <Link href="/dodaj">
@@ -41,5 +49,9 @@ function MainNavbar() {
     </Navbar>
   );
 }
+
+MainNavbar.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default MainNavbar;

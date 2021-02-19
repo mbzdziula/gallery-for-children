@@ -24,22 +24,17 @@ export default async function handler(req, res) {
     //   const result = await prisma.gallery.delete({ where: { id: id.id } });
     //   return res.json(result);
     // }
-    // case 'PATCH': {
-    //   const updateTodo = req.body;
-    //   const result = await prisma.todos.update({
-    //     where: { Id: updateTodo.Id },
-    //     data: {
-    //       Todo: updateTodo.Todo,
-    //       IsDone: updateTodo.IsDone,
-    //       Like: updateTodo.Like,
-    //       Comment: updateTodo.Comment,
-    //       Date: updateTodo.Date,
-    //       Project: updateTodo.Project,
-    //       ProjectId: updateTodo.ProjectId,
-    //     },
-    //   });
-    //   return res.json(result);
-    // }
+    case 'PATCH': {
+      const post = req.body;
+      const result = await prisma.todos.update({
+        where: { id: post.id },
+        data: {
+          great: post.great,
+          like: post.like,
+        },
+      });
+      return res.json(result);
+    }
     default: {
       const result = await prisma.gallery.findMany({
         orderBy: {

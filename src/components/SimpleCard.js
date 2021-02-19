@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
-function SimpleCard({ element }) {
+function SimpleCard({ element, sessionClick, setSessionClick }) {
   const date = element.CreatedAt;
   const newDate = new Date(date.replace(' ', 'T'));
   // const toDay = new Date();
@@ -23,6 +24,57 @@ function SimpleCard({ element }) {
   month[11] = 'Grudzień';
   const newMonth = month[newDate.getMonth()];
 
+  const [clickedGreat, setClickedGreat] = useState(sessionClick.great.includes(element.id));
+  const [clickedLike, setClickedLike] = useState(sessionClick.like.includes(element.id));
+
+  const onClickLike = async () => {
+    const newClicked = sessionClick.like.includes(element.id);
+    setClickedLike(newClicked);
+    // console.log(element.id);
+
+    if (!clickedLike) {
+      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, { value: 1 });
+      const newSessionClick = sessionClick.like;
+      newSessionClick.push(element.id);
+      setSessionClick({ type: 'LIKE', payload: newSessionClick });
+      setClickedLike(true);
+    } else {
+      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, { value: -1 });
+      console.log(newSessionClick);
+      console.log(element.id);
+
+      const newSessionClick = sessionClick.like.filter((e) => e !== element.id);
+
+      setSessionClick({ type: 'LIKE', payload: newSessionClick });
+      setClickedLike(false);
+      console.log(newSessionClick);
+    }
+  };
+
+  const onClickGreat = async () => {
+    const newClicked = sessionClick.great.includes(element.id);
+    setClickedGreat(newClicked);
+
+    if (!clickedGreat) {
+      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
+        value: 1,
+      });
+
+      const newSessionClick = sessionClick.great;
+      newSessionClick.push(element.id);
+      setSessionClick({ type: 'GREAT', payload: newSessionClick });
+      setClickedGreat(true);
+    } else {
+      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
+        value: -1,
+      });
+
+      const newSessionClick = sessionClick.great.filter((e) => e !== element.id);
+      setSessionClick({ type: 'GREAT', payload: newSessionClick });
+      setClickedGreat(false);
+    }
+  };
+
   return (
     <div className="card my-4 mx-5 shadow">
       <Image
@@ -37,12 +89,24 @@ function SimpleCard({ element }) {
         <h6 className="card-subtitle fw-normal">Autor: {element.autor}</h6>
         <p className="card-text fw-light">{element.description}</p>
         <div className="d-flex justify-content-center">
-          <div className="btn btn-outline-danger card-link d-flex justify-content-center button-like">
+          <button
+            type="button"
+            className={`btn btn-outline-danger card-link d-flex justify-content-center button-like ${
+              clickedGreat ? 'active' : clickedLike ? 'disabled' : ''
+            }`}
+            onClick={() => onClickGreat()}
+          >
             <i className="bi bi-heart-fill me-2"></i>Doskonała
-          </div>
-          <div className="btn btn-outline-success card-link d-flex justify-content-center button-like">
+          </button>
+          <button
+            type="button"
+            className={`btn btn-outline-success card-link d-flex justify-content-center button-like ${
+              clickedLike ? 'active' : clickedGreat ? 'disabled' : ''
+            }`}
+            onClick={() => onClickLike()}
+          >
             <i className="bi bi-hand-thumbs-up-fill me-2"></i>Dobra
-          </div>
+          </button>
         </div>
       </div>
       <div className="card-footer">
@@ -61,6 +125,8 @@ function SimpleCard({ element }) {
 }
 
 SimpleCard.propTypes = {
+  sessionClick: PropTypes.object.isRequired,
+  setSessionClick: PropTypes.func.isRequired,
   element: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 };

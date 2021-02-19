@@ -96,7 +96,7 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
   };
 
   return (
-    <div className="card my-4 mx-5 shadow">
+    <div className="card my-sm-4 my-2 mx-sm-5 mx-2 shadow">
       <Image
         cloudName="mbzdziula"
         publicId={element.id_image}

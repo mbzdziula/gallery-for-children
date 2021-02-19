@@ -9,7 +9,7 @@ function Pagination({ page, count, name }) {
     paginationCount[i] = i + 1;
   }
   return (
-    <div className="row mx-4 mt-2">
+    <div className="row mx-sm-4 mx-2 mt-2">
       <div className="d-flex justify-content-between mb-2">
         <Link href={`/${name}/${page - 1}`}>
           <a

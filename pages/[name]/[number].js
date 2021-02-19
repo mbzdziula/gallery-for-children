@@ -94,9 +94,11 @@ export async function getServerSideProps(context) {
   // const initialState = JSON.parse(localStorage.getItem(local_state));
   const name = context.query.name;
   const page = Number(context.query.number);
-  const resGallery = await axios.get(`http://localhost:3000/api/${name}/${page}`);
+  const resGallery = await axios.get(
+    `https://gallery-for-childern.herokuapp.com/api/${name}/${page}`,
+  );
   const gallery = resGallery.data;
-  const resCount = await axios.get(`http://localhost:3000/api/${name}/count`);
+  const resCount = await axios.get(`https://gallery-for-childern.herokuapp.com/api/${name}/count`);
   const count = Math.ceil(Number(resCount.data) / 10);
   return { props: { gallery, page, count, name } };
 }

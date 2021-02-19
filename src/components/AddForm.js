@@ -41,7 +41,7 @@ function AddForm() {
     const newPost = post;
     newPost.id_image = newIdImage;
 
-    await axios.post('http://localhost:3000/api/gallery', newPost);
+    await axios.post('https://gallery-for-childern.herokuapp.com/api/gallery', newPost);
     imageInputRef.current.value = '';
     titleInputRef.current.value = '';
     autorInputRef.current.value = '';

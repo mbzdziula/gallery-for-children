@@ -33,19 +33,25 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
     // console.log(element.id);
 
     if (!clickedLike) {
-      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, {
-        value: 1,
-        score: 1,
-      });
+      await axios.patch(
+        `https://gallery-for-childern.herokuapp.com/api/action/like/${element.id}`,
+        {
+          value: 1,
+          score: 1,
+        },
+      );
       const newSessionClick = sessionClick.like;
       newSessionClick.push(element.id);
       setSessionClick({ type: 'LIKE', payload: newSessionClick });
       setClickedLike(true);
     } else {
-      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, {
-        value: -1,
-        score: -1,
-      });
+      await axios.patch(
+        `https://gallery-for-childern.herokuapp.com/api/action/like/${element.id}`,
+        {
+          value: -1,
+          score: -1,
+        },
+      );
       console.log(newSessionClick);
       console.log(element.id);
 
@@ -62,20 +68,26 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
     setClickedGreat(newClicked);
 
     if (!clickedGreat) {
-      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
-        value: 1,
-        score: 2,
-      });
+      await axios.patch(
+        `https://gallery-for-childern.herokuapp.com/api/action/great/${element.id}`,
+        {
+          value: 1,
+          score: 2,
+        },
+      );
 
       const newSessionClick = sessionClick.great;
       newSessionClick.push(element.id);
       setSessionClick({ type: 'GREAT', payload: newSessionClick });
       setClickedGreat(true);
     } else {
-      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
-        value: -1,
-        score: -2,
-      });
+      await axios.patch(
+        `https://gallery-for-childern.herokuapp.com/api/action/great/${element.id}`,
+        {
+          value: -1,
+          score: -2,
+        },
+      );
 
       const newSessionClick = sessionClick.great.filter((e) => e !== element.id);
       setSessionClick({ type: 'GREAT', payload: newSessionClick });

@@ -12,7 +12,7 @@ function MainNavbar({ name }) {
   return (
     <Navbar expand="md" className="navbar navbar-dark bg-dark">
       <div className="container d-flex align-items-center">
-        <Link href="/">
+        <Link href="/page/1">
           <a className="navbar-brand flex-md-grow-1 text-end">Galeria Laurek</a>
         </Link>
         <Navbar.Toggle aria-controls="main-navbar-nav" />

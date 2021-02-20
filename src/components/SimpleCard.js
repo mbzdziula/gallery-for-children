@@ -33,25 +33,19 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
     // console.log(element.id);
 
     if (!clickedLike) {
-      await axios.patch(
-        `https://gallery-for-children.herokuapp.com/api/action/like/${element.id}`,
-        {
-          value: 1,
-          score: 1,
-        },
-      );
+      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, {
+        value: 1,
+        score: 1,
+      });
       const newSessionClick = sessionClick.like;
       newSessionClick.push(element.id);
       setSessionClick({ type: 'LIKE', payload: newSessionClick });
       setClickedLike(true);
     } else {
-      await axios.patch(
-        `https://gallery-for-children.herokuapp.com/api/action/like/${element.id}`,
-        {
-          value: -1,
-          score: -1,
-        },
-      );
+      await axios.patch(`http://localhost:3000/api/action/like/${element.id}`, {
+        value: -1,
+        score: -1,
+      });
       console.log(newSessionClick);
       console.log(element.id);
 
@@ -68,26 +62,20 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
     setClickedGreat(newClicked);
 
     if (!clickedGreat) {
-      await axios.patch(
-        `https://gallery-for-children.herokuapp.com/api/action/great/${element.id}`,
-        {
-          value: 1,
-          score: 2,
-        },
-      );
+      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
+        value: 1,
+        score: 2,
+      });
 
       const newSessionClick = sessionClick.great;
       newSessionClick.push(element.id);
       setSessionClick({ type: 'GREAT', payload: newSessionClick });
       setClickedGreat(true);
     } else {
-      await axios.patch(
-        `https://gallery-for-children.herokuapp.com/api/action/great/${element.id}`,
-        {
-          value: -1,
-          score: -2,
-        },
-      );
+      await axios.patch(`http://localhost:3000/api/action/great/${element.id}`, {
+        value: -1,
+        score: -2,
+      });
 
       const newSessionClick = sessionClick.great.filter((e) => e !== element.id);
       setSessionClick({ type: 'GREAT', payload: newSessionClick });
@@ -96,48 +84,50 @@ function SimpleCard({ element, sessionClick, setSessionClick }) {
   };
 
   return (
-    <div className="card my-sm-4 my-2 mx-sm-5 mx-2 shadow">
-      <Image
-        cloudName="mbzdziula"
-        publicId={element.id_image}
-        width="1024"
-        crop="scale"
-        className="card-img"
-      />
-      <div className="card-body text-center">
-        <h5 className="card-title">{element.title}</h5>
-        <h6 className="card-subtitle fw-normal">Autor: {element.autor}</h6>
-        <p className="card-text fw-light">{element.description}</p>
-        <div className="d-flex justify-content-center">
-          <button
-            type="button"
-            className={`btn btn-outline-danger card-link d-flex justify-content-center button-like ${
-              clickedGreat ? 'active' : clickedLike ? 'disabled' : ''
-            }`}
-            onClick={() => onClickGreat()}
-          >
-            <i className="bi bi-heart-fill me-2"></i>Doskonała
-          </button>
-          <button
-            type="button"
-            className={`btn btn-outline-success card-link d-flex justify-content-center button-like ${
-              clickedLike ? 'active' : clickedGreat ? 'disabled' : ''
-            }`}
-            onClick={() => onClickLike()}
-          >
-            <i className="bi bi-hand-thumbs-up-fill me-2"></i>Dobra
-          </button>
+    <div className="col-xl-6">
+      <div className="card my-4 mx-md-5 mx-xl-2 m-2 shadow">
+        <Image
+          cloudName="mbzdziula"
+          publicId={element.id_image}
+          width="1024"
+          crop="scale"
+          className="card-img"
+        />
+        <div className="card-body text-center">
+          <h5 className="card-title">{element.title}</h5>
+          <h6 className="card-subtitle fw-normal">Autor: {element.autor}</h6>
+          <p className="card-text fw-light">{element.description}</p>
+          <div className="d-flex justify-content-center">
+            <button
+              type="button"
+              className={`btn btn-outline-danger card-link d-flex justify-content-center button-like ${
+                clickedGreat ? 'active' : clickedLike ? 'disabled' : ''
+              }`}
+              onClick={() => onClickGreat()}
+            >
+              <i className="bi bi-heart-fill me-2"></i>Doskonała
+            </button>
+            <button
+              type="button"
+              className={`btn btn-outline-success card-link d-flex justify-content-center button-like ${
+                clickedLike ? 'active' : clickedGreat ? 'disabled' : ''
+              }`}
+              onClick={() => onClickLike()}
+            >
+              <i className="bi bi-hand-thumbs-up-fill me-2"></i>Dobra
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="card-footer">
-        <div className="row justify-content-start align-items-center">
-          <span className="col-md-4 text-center">
-            Dodano: {newDate.getDate()} {newMonth} {newDate.getFullYear()}
-          </span>
-          <span className="col-md-8">
-            Tagi:
-            <span className="text-muted"> {element.tag}</span>
-          </span>
+        <div className="card-footer">
+          <div className="row justify-content-start align-items-center">
+            <span className="col-md-4 text-center">
+              Dodano: {newDate.getDate()} {newMonth} {newDate.getFullYear()}
+            </span>
+            <span className="col-md-8">
+              Tagi:
+              <span className="text-muted"> {element.tag}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>

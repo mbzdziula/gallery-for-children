@@ -64,16 +64,17 @@ export default function Home({ gallery, page, count, name }) {
         <MainNavbar name={name} />
 
         <main className="container bg-light d-flex flex-column flex-grow-1 py-2">
-          {gallery.map((element) => (
-            <SimpleCard
-              key={element.id}
-              element={element}
-              name={name}
-              sessionClick={sessionClick}
-              setSessionClick={setSessionClick}
-            />
-          ))}
-
+          <div className='d-flex flex-column flex-xl-row flex-wrap'>
+            {gallery.map((element) => (
+              <SimpleCard
+                key={element.id}
+                element={element}
+                name={name}
+                sessionClick={sessionClick}
+                setSessionClick={setSessionClick}
+              />
+            ))}
+          </div>
           <Pagination page={page} count={count} name={name} />
         </main>
 
